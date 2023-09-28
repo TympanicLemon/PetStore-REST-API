@@ -8,16 +8,16 @@ import lombok.ToString;
 @Data
 @Entity
 public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long employeeId;
-    private String employeeFirstName;
-    private String employeeLastName;
-    private String employeeJobTitle;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long employeeId;
+  private String employeeFirstName;
+  private String employeeLastName;
+  private String employeeJobTitle;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pet_store_id")
-    private PetStore petStore;
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "pet_store_id")
+  private PetStore petStore;
 }

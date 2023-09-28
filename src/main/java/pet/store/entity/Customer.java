@@ -10,17 +10,17 @@ import java.util.Set;
 @Data
 @Entity
 public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
-    private String customerFirstName;
-    private String customerLastName;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long customerId;
+  private String customerFirstName;
+  private String customerLastName;
 
-    @Column(unique = true)
-    private String customerEmail;
+  @Column(unique = true)
+  private String customerEmail;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "customers", cascade = CascadeType.PERSIST)
-    private Set<PetStore> petStores;
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @ManyToMany(mappedBy = "customers", cascade = CascadeType.PERSIST)
+  private Set<PetStore> petStores;
 }
