@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -18,7 +19,7 @@ public class PetStore {
   private String petStoreCity;
   private String petStoreState;
   private String petStoreZip;
-  private String petStorePhoneNumber;
+  private String petStorePhone;
 
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
@@ -26,10 +27,10 @@ public class PetStore {
   @JoinTable(name = "customer_pet_store",
       joinColumns = @JoinColumn(name = "pet_store_id"),
       inverseJoinColumns = @JoinColumn(name = "customer_id"))
-  private Set<Customer> customers;
+  private Set<Customer> customers = new HashSet<>();
 
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
   @OneToMany(mappedBy = "petStore", cascade = CascadeType.ALL, orphanRemoval = true)
-  private Set<Employee> employees;
+  private Set<Employee> employees = new HashSet<>();
 }
